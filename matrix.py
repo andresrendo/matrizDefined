@@ -11,13 +11,13 @@ class Matriz:
 
     def obtener_valor(self, fila, columna):
         if fila < 0 or fila >= self.filas or columna < 0 or columna >= self.columnas:
-            print("Índices fuera de rango.")
+            print("\nÍndices fuera de rango.")
             return None
         return self.matriz[fila][columna]
 
     def modificar_valor(self, fila, columna, nuevo_valor):
         if fila < 0 or fila >= self.filas or columna < 0 or columna >= self.columnas:
-            print("Índices fuera de rango.")
+            print("\nÍndices fuera de rango.")
             return
         self.matriz[fila][columna] = nuevo_valor
     
@@ -34,8 +34,8 @@ class Matriz:
 
 
     def mostrar_igualdad(self):
-        print(f"El valor de igualdad es: {self.igualdad1}")
-        print(f"El valor de igualdad2 es: {self.igualdad2}")
-        print(f"El valor de igualdad3 es: {self.igualdad3}")
-        print(f"El valor de igualdad4 es: {self.igualdad4}")
+        print(f"\nEl valor de igualdad es: {self.igualdad1}")
+        print(f"\nEl valor de igualdad2 es: {self.igualdad2}")
+        print(f"\nEl valor de igualdad3 es: {self.igualdad3}")
+        print(f"\nEl valor de igualdad4 es: {self.igualdad4}")
 
