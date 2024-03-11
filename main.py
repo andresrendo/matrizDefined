@@ -6,7 +6,7 @@ from matrix import Matriz
 
 def trespor3(matriz, altura):
     for i in range  (altura):
-        X = int(input(f"Introduzca el valor de X en la ecuacion {i+1}: "))
+        X = int(input(f"\nIntroduzca el valor de X en la Ecuación {i+1}: "))
         if X > 0:
             Xec = f"{X}"
         elif X == 0:
@@ -14,7 +14,7 @@ def trespor3(matriz, altura):
         else:
             Xec = f"{X}"
         print(f"{Xec}X + Y + Z = 0 \n")
-        Y = int(input(f"Introduzca el valor de Y en la ecuacion {i+1}: "))
+        Y = int(input(f"\nIntroduzca el valor de Y en la Ecuación {i+1}: "))
         if Y > 0:
             Yec = f"+{Y}"
         elif Y == 0:
@@ -22,7 +22,7 @@ def trespor3(matriz, altura):
         else:
             Yec = f"{Y}"
         print(f"{Xec}X {Yec}Y + Z = 0 \n")
-        Z = int(input(f"Introduzca el valor de Z en la ecuacion {i+1}: "))
+        Z = int(input(f"\nIntroduzca el valor de Z en la Ecuación {i+1}: "))
         if Z > 0:
             Zec = f"+{Z}"
         elif Z == 0:
@@ -33,10 +33,10 @@ def trespor3(matriz, altura):
         matriz.modificar_valor(i, 0, X)
         matriz.modificar_valor(i, 1, Y)
         matriz.modificar_valor(i, 2, Z)
-        igualdad = input(f"Introduzca el valor de igualdad en la ecuacion {i+1}: ")
+        igualdad = input(f"\nIntroduzca el valor de igualdad en la Ecuación {i+1}: ")
         print(f"{Xec}X {Yec}Y {Zec}Z = {igualdad}\n")
         matriz.modificar_igualdad(i, igualdad)
-    print("El sistema de ecuaciones es: \n")
+    print("\n* El Sistema de Ecuaciones es: \n")
     print(f"|{matriz.obtener_valor(0, 0)}X {matriz.obtener_valor(0, 1)}Y {matriz.obtener_valor(0, 2)}Z = {matriz.igualdad1}")
     print(f"|{matriz.obtener_valor(1, 0)}X {matriz.obtener_valor(1, 1)}Y {matriz.obtener_valor(1, 2)}Z = {matriz.igualdad2}")
     print(f"|{matriz.obtener_valor(2, 0)}X {matriz.obtener_valor(2, 1)}Y {matriz.obtener_valor(2, 2)}Z = {matriz.igualdad3}")
@@ -44,7 +44,7 @@ def trespor3(matriz, altura):
 
 def cuatropor4(matriz, altura):
     for i in range  (altura):
-        X = input(f"Introduzca el valor de X en la ecuacion {i+1}: ")
+        X = input(f"\nIntroduzca el valor de X en la Ecuación {i+1}: ")
         if X > 0:
             Xec = f"{X}"
         elif X == 0:
@@ -52,21 +52,21 @@ def cuatropor4(matriz, altura):
         else:
             Xec = f"{X}"
         print(f"{Xec}X + Y + Z + W = 0 \n")
-        Y = input(f"Introduzca el valor de Y en la ecuacion {i+1}: ")
+        Y = input(f"\nIntroduzca el valor de Y en la Ecuación {i+1}: ")
         if Y > 0:
             Yec = f"+{Y}"
         elif Y == 0:
             Yec = f"+{Y}"
         else:
             Yec = f"{Y}"
-        Z = input(f"Introduzca el valor de Z en la ecuacion {i+1}: ")
+        Z = input(f"\nIntroduzca el valor de Z en la Ecuación {i+1}: ")
         if Z > 0:
             Zec = f"+{Z}"
         elif Z == 0:
             Zec = f"+{Z}"
         else:
             Zec = f"{Z}"
-        W = input(f"Introduzca el valor de W en la ecuacion {i+1}: ")
+        W = input(f"\nIntroduzca el valor de W en la Ecuación {i+1}: ")
         if W > 0:
             Wec = f"+{W}"
         elif W == 0:
@@ -78,10 +78,10 @@ def cuatropor4(matriz, altura):
         matriz.modificar_valor(i, 1, Y)
         matriz.modificar_valor(i, 2, Z)
         matriz.modificar_valor(i, 3, W)
-        igualdad = input(f"Introduzca el valor de igualdad en la ecuacion {i+1}: ")
+        igualdad = input(f"\nIntroduzca el valor de igualdad en la Ecuación {i+1}: ")
         print(f"{Xec}X {Yec}Y {Zec}Z {Wec}W = {igualdad}\n")
         matriz.modificar_igualdad(i, igualdad)
-    print("El sistema de ecuaciones es: \n")
+    print("\n* El Sistema de Ecuaciones es: \n")
     print(f"|{matriz.obtener_valor(0, 0)}X {matriz.obtener_valor(0, 1)}Y {matriz.obtener_valor(0, 2)}Z {matriz.obtener_valor(0, 3)}W = {matriz.igualdad1}")
     print(f"|{matriz.obtener_valor(1, 0)}X {matriz.obtener_valor(1, 1)}Y {matriz.obtener_valor(1, 2)}Z {matriz.obtener_valor(1, 3)}W = {matriz.igualdad2}")
     print(f"|{matriz.obtener_valor(2, 0)}X {matriz.obtener_valor(2, 1)}Y {matriz.obtener_valor(2, 2)}Z {matriz.obtener_valor(2, 3)}W = {matriz.igualdad3}")
@@ -89,13 +89,18 @@ def cuatropor4(matriz, altura):
     return matriz
 
 def main():
-    altura = input("Cuantas ecuaciones desea tener 3 o 4?: \n")
+    print('''  
+                        ------------------------------------
+                        || ¡¡ BIENVENIDO A Your_MATRIX !! ||
+                        ------------------------------------ 
+          ''')
+    altura = input("¿Cuántas ecuaciones desea tener 3 ó 4?: ")
     while altura != "3" and altura != "4":
-        print("Por favor introduzca un valor valido")
-        altura = input("Cuantas ecuaciones desea tener 3 o 4?: \n")
+        print("\n- Por favor introduzca un valor valido")
+        altura = input("\n¿Cuántas ecuaciones desea tener 3 ó 4?: ")
     altura = int  (altura)
     ancho = int(altura)
-    print("El sistema de ecuaciones es: \n")
+    print("\n* El Sistema de Ecuaciones es: \n")
 
     if ancho == 3:
         print("|X + Y + Z = 0")
