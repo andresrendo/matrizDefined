@@ -1,119 +1,63 @@
-# import numpy as np
-# import random
 from matrix import Matriz
 
-# Crear una matriz de 3x3 con valores aleatorios entre 0 y 9
+matriz = None  
+altura = 0
 
-def trespor3(matriz, altura):
-    for i in range  (altura):
-        X = int(input(f"Introduzca el valor de X en la ecuacion {i+1}: "))
-        if X > 0:
-            Xec = f"{X}"
-        elif X == 0:
-            Xec = f"+{X}"
-        else:
-            Xec = f"{X}"
-        print(f"{Xec}X + Y + Z = 0 \n")
-        Y = int(input(f"Introduzca el valor de Y en la ecuacion {i+1}: "))
-        if Y > 0:
-            Yec = f"+{Y}"
-        elif Y == 0:
-            Yec = f"+{Y}"
-        else:
-            Yec = f"{Y}"
-        print(f"{Xec}X {Yec}Y + Z = 0 \n")
-        Z = int(input(f"Introduzca el valor de Z en la ecuacion {i+1}: "))
-        if Z > 0:
-            Zec = f"+{Z}"
-        elif Z == 0:
-            Zec = f"+{Z}"
-        else:
-            Zec = f"{Z}"
-        print(f"{Xec}X {Yec}Y {Zec}Z = 0 \n")
-        matriz.modificar_valor(i, 0, X)
-        matriz.modificar_valor(i, 1, Y)
-        matriz.modificar_valor(i, 2, Z)
-        igualdad = input(f"Introduzca el valor de igualdad en la ecuacion {i+1}: ")
-        print(f"{Xec}X {Yec}Y {Zec}Z = {igualdad}\n")
-        matriz.modificar_igualdad(i, igualdad)
-    print("El sistema de ecuaciones es: \n")
-    print(f"|{matriz.obtener_valor(0, 0)}X {matriz.obtener_valor(0, 1)}Y {matriz.obtener_valor(0, 2)}Z = {matriz.igualdad1}")
-    print(f"|{matriz.obtener_valor(1, 0)}X {matriz.obtener_valor(1, 1)}Y {matriz.obtener_valor(1, 2)}Z = {matriz.igualdad2}")
-    print(f"|{matriz.obtener_valor(2, 0)}X {matriz.obtener_valor(2, 1)}Y {matriz.obtener_valor(2, 2)}Z = {matriz.igualdad3}")
-    return matriz
+while True:
+    print("Seleccione el sistema de ecuaciones a trabajar:")
+    print("1. Sistema de 3 ecuaciones")
+    print("2. Sistema de 4 ecuaciones")
+    print("3. Mostrar matriz")
+    print("4. Verificar que la matriz esté bien definida")    
+    print("5. Salir")
 
-def cuatropor4(matriz, altura):
-    for i in range  (altura):
-        X = input(f"Introduzca el valor de X en la ecuacion {i+1}: ")
-        if X > 0:
-            Xec = f"{X}"
-        elif X == 0:
-            Xec = f"+{X}"
-        else:
-            Xec = f"{X}"
-        print(f"{Xec}X + Y + Z + W = 0 \n")
-        Y = input(f"Introduzca el valor de Y en la ecuacion {i+1}: ")
-        if Y > 0:
-            Yec = f"+{Y}"
-        elif Y == 0:
-            Yec = f"+{Y}"
-        else:
-            Yec = f"{Y}"
-        Z = input(f"Introduzca el valor de Z en la ecuacion {i+1}: ")
-        if Z > 0:
-            Zec = f"+{Z}"
-        elif Z == 0:
-            Zec = f"+{Z}"
-        else:
-            Zec = f"{Z}"
-        W = input(f"Introduzca el valor de W en la ecuacion {i+1}: ")
-        if W > 0:
-            Wec = f"+{W}"
-        elif W == 0:
-            Wec = f"+{W}"
-        else:
-            Wec = f"{W}"
-        print(f"{Xec}X {Yec}Y {Zec}Z {Wec}W = 0 \n")
-        matriz.modificar_valor(i, 0, X)
-        matriz.modificar_valor(i, 1, Y)
-        matriz.modificar_valor(i, 2, Z)
-        matriz.modificar_valor(i, 3, W)
-        igualdad = input(f"Introduzca el valor de igualdad en la ecuacion {i+1}: ")
-        print(f"{Xec}X {Yec}Y {Zec}Z {Wec}W = {igualdad}\n")
-        matriz.modificar_igualdad(i, igualdad)
-    print("El sistema de ecuaciones es: \n")
-    print(f"|{matriz.obtener_valor(0, 0)}X {matriz.obtener_valor(0, 1)}Y {matriz.obtener_valor(0, 2)}Z {matriz.obtener_valor(0, 3)}W = {matriz.igualdad1}")
-    print(f"|{matriz.obtener_valor(1, 0)}X {matriz.obtener_valor(1, 1)}Y {matriz.obtener_valor(1, 2)}Z {matriz.obtener_valor(1, 3)}W = {matriz.igualdad2}")
-    print(f"|{matriz.obtener_valor(2, 0)}X {matriz.obtener_valor(2, 1)}Y {matriz.obtener_valor(2, 2)}Z {matriz.obtener_valor(2, 3)}W = {matriz.igualdad3}")
-    print(f"|{matriz.obtener_valor(3, 0)}X {matriz.obtener_valor(3, 1)}Y {matriz.obtener_valor(3, 2)}Z {matriz.obtener_valor(3, 3)}W = {matriz.igualdad4}")
-    return matriz
-
-def main():
-    altura = input("Cuantas ecuaciones desea tener 3 o 4?: \n")
-    while altura != "3" and altura != "4":
-        print("Por favor introduzca un valor valido")
-        altura = input("Cuantas ecuaciones desea tener 3 o 4?: \n")
-    altura = int  (altura)
-    ancho = int(altura)
-    print("El sistema de ecuaciones es: \n")
-
-    if ancho == 3:
+    opcion = input("Ingrese la opción deseada : ")
+    if opcion == '1':
+        filas = columnas = 3
+        matriz = Matriz(filas, columnas)
+        altura = filas
         print("|X + Y + Z = 0")
         print("|X + Y + Z = 0")
-        print("|X + Y + Z = 0")
-    elif ancho == 4:
+        print("|X + Y + Z = 0")        
+        matriz.trespor3(altura)
+ 
+    elif opcion == '2':
+        filas = columnas = 3
+        matriz = Matriz(filas, columnas)
+        altura = filas
         print("|X + Y + Z + W = 0")
         print("|X + Y + Z + W = 0")
         print("|X + Y + Z + W = 0")
         print("|X + Y + Z + W = 0")
+        matriz.cuatropor4(altura)          
 
-    matriz = Matriz (altura, ancho)  # Crear una matriz de nxm con valores iniciales 0
+    elif opcion == "3":
+        if matriz is not None and altura > 0:
+            print("Matriz generada:") 
+            matriz.mostrar_matriz() 
+        else:
+            print("No se ha generado ninguna matriz aún.")
 
-    if ancho == 3:
-        matriz = trespor3(matriz, altura)
-    elif ancho == 4:
-        matriz = cuatropor4(matriz, altura)
-    matriz.mostrar_matriz()
+    elif opcion == "4":
+        if matriz is not None and altura > 0:
+            if matriz.verificar_matriz_bien_definida():
+                print("La matriz está bien definida.")
+            else:
+                print("La matriz no está bien definida, no es diagonalmente dominante.")
+        else:
+            print("No se ha generado ninguna matriz para verificar.")
 
-main()
+    elif opcion == '5':
+        print("Saliendo del programa.")
+        break
+    else:
+        print("Opción no válida, intente de nuevo.")
+
+
+
+
+
+
+
+
 
