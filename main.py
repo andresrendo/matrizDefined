@@ -8,8 +8,9 @@ while True:
     print("1. Sistema de 3 ecuaciones")
     print("2. Sistema de 4 ecuaciones")
     print("3. Mostrar matriz")
-    print("4. Verificar que la matriz esté bien definida")    
-    print("5. Salir")
+    print("4. Verificar que la matriz esté bien definida")  
+    print("5. Solucionar sistema por metodo de Jacobi")  
+    print("6. Salir")
 
     opcion = input("Ingrese la opción deseada : ")
     if opcion == '1':
@@ -47,7 +48,12 @@ while True:
         else:
             print("No se ha generado ninguna matriz para verificar.")
 
-    elif opcion == '5':
+    elif opcion == "5":
+        if matriz is not None and altura > 0 and matriz.verificar_matriz_bien_definida:
+            matriz.solucion_jacobi()
+
+
+    elif opcion == '6':
         print("Saliendo del programa.")
         break
     else:

@@ -84,6 +84,19 @@ class Matriz:
                 return False
         return True
 
+    def solucion_jacobi(self):
+        x = np.zeros_like(self.igualdades)
+        D = np.diag(self.matriz)
+        R = self.matriz - np.diagflat(D)
+        for cuenta_iteracion in range(100):
+
+            x_new = (self.igualdades - np.dot(R,x))/D
+            x = x_new
+
+
+        print("Solution")
+        print(x)    
+
 
 
 
