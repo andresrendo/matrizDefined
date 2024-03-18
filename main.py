@@ -23,7 +23,7 @@ while True:
         matriz.trespor3(altura)
  
     elif opcion == '2':
-        filas = columnas = 3
+        filas = columnas = 4
         matriz = Matriz(filas, columnas)
         altura = filas
         print("|X + Y + Z + W = 0")
