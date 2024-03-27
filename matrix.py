@@ -3,7 +3,7 @@ import numpy as np
 def solo_num(eje,i):
         while True:
             try:
-                num = int(input(f"Introduzca el valor de {eje} en la ecuacion {i+1}: "))
+                num = int(input(f"Introduzca el valor de {eje} en la ecuación {i+1}: "))
                 break
             except ValueError:
                 print("Por favor, introduzca un número entero.")
@@ -26,7 +26,6 @@ class Matriz:
 
     def modificar_valor(self, fila, columna, nuevo_valor):
         self.matriz[fila][columna] = nuevo_valor
-    
 
     def modificar_igualdad(self, numFila, igualdad):
         self.igualdades[numFila] = igualdad
@@ -103,9 +102,4 @@ class Matriz:
 
 
         print("\nSolution:")
-        print(f'\t{x}')    
-
-
-
-
-
+        print(f'\t{x}')   
