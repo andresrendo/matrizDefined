@@ -1,124 +1,113 @@
-# import numpy as np
-# import random
 from matrix import Matriz
+import os
+import time
 
-# Crear una matriz de 3x3 con valores aleatorios entre 0 y 9
+matriz = None  
+altura = 0
 
-def trespor3(matriz, altura):
-    for i in range  (altura):
-        X = int(input(f"\nIntroduzca el valor de X en la Ecuación {i+1}: "))
-        if X > 0:
-            Xec = f"{X}"
-        elif X == 0:
-            Xec = f"+{X}"
+def clear_screen():
+    os.system('cls')
+
+
+clear_screen()
+print('''  
+              ------------------------------------
+              || ¡¡ BIENVENIDO A Your_MATRIX !! ||
+              ------------------------------------ 
+''')
+
+while True:
+    print("\nSeleccione el sistema de ecuaciones a trabajar:\n\n\t1. Sistema de 3 ecuaciones\n\t2. Sistema de 4 ecuacion\n\t3. Mostrar matriz\n\t4. Verificar que la matriz esté bien definida\n\t5. Solucionar sistema por metodo de Jacobi\n\t6. Salir")
+
+    opcion = input("\nIngrese la opción deseada: ")
+    if opcion == '1':
+        true = 0
+        while matriz is not None:
+            verify = input("\n\t¿Desea sobreescribir la matriz actual? (S/N): ")
+            if verify.lower() == 'n' or verify.lower() == 'no':
+                clear_screen()
+                true = 1
+                print("\n\tCreación de matriz cancelada.")
+                break
+            elif verify.lower() == 's'or verify.lower() == 'si':
+                true = 0
+                break
+            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Si o No. ")
+        if true == 0:
+            clear_screen()
+            print("\n\tIniciando creacion de matriz de 3x3...")
+            filas = columnas = 3
+            matriz = Matriz(filas, columnas)
+            altura = filas
+            print("\n|X + Y + Z = 0")
+            print("|X + Y + Z = 0")
+            print("|X + Y + Z = 0\n")        
+            matriz.trespor3(altura)        
+
+    elif opcion == '2':
+        while matriz is not None:
+            verify = input("\n\t¿Desea sobreescribir la matriz actual? (S/N): ")
+            if verify.lower() == 'n' or verify.lower() == 'no':
+                clear_screen()
+                true =1
+                print("\n\tCreación de matriz cancelada.")
+                break
+            elif verify.lower() == 's'or verify.lower() == 'si':
+                true = 0
+                break
+            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Si o No. ")
+        if true == 0:
+            clear_screen()
+            print("\n\tIniciando creacion de matriz de 4x4...")
+            filas = columnas = 4
+            matriz = Matriz(filas, columnas)
+            altura = filas
+            print("\n|X + Y + Z + W = 0")
+            print("|X + Y + Z + W = 0")
+            print("|X + Y + Z + W = 0")
+            print("|X + Y + Z + W = 0\n")
+            matriz.cuatropor4(altura)          
+
+    elif opcion == "3":
+        clear_screen()
+        print("\n\tMostrando matriz...")
+        if matriz is not None and altura > 0:
+            print("\n\tMatriz generada:") 
+            matriz.mostrar_matriz() 
         else:
-            Xec = f"{X}"
-        print(f"{Xec}X + Y + Z = 0 \n")
-        Y = int(input(f"\nIntroduzca el valor de Y en la Ecuación {i+1}: "))
-        if Y > 0:
-            Yec = f"+{Y}"
-        elif Y == 0:
-            Yec = f"+{Y}"
-        else:
-            Yec = f"{Y}"
-        print(f"{Xec}X {Yec}Y + Z = 0 \n")
-        Z = int(input(f"\nIntroduzca el valor de Z en la Ecuación {i+1}: "))
-        if Z > 0:
-            Zec = f"+{Z}"
-        elif Z == 0:
-            Zec = f"+{Z}"
-        else:
-            Zec = f"{Z}"
-        print(f"{Xec}X {Yec}Y {Zec}Z = 0 \n")
-        matriz.modificar_valor(i, 0, X)
-        matriz.modificar_valor(i, 1, Y)
-        matriz.modificar_valor(i, 2, Z)
-        igualdad = input(f"\nIntroduzca el valor de igualdad en la Ecuación {i+1}: ")
-        print(f"{Xec}X {Yec}Y {Zec}Z = {igualdad}\n")
-        matriz.modificar_igualdad(i, igualdad)
-    print("\n* El Sistema de Ecuaciones es: \n")
-    print(f"|{matriz.obtener_valor(0, 0)}X {matriz.obtener_valor(0, 1)}Y {matriz.obtener_valor(0, 2)}Z = {matriz.igualdad1}")
-    print(f"|{matriz.obtener_valor(1, 0)}X {matriz.obtener_valor(1, 1)}Y {matriz.obtener_valor(1, 2)}Z = {matriz.igualdad2}")
-    print(f"|{matriz.obtener_valor(2, 0)}X {matriz.obtener_valor(2, 1)}Y {matriz.obtener_valor(2, 2)}Z = {matriz.igualdad3}")
-    return matriz
+            print("\n\tNo se ha generado ninguna matriz aún.")
 
-def cuatropor4(matriz, altura):
-    for i in range  (altura):
-        X = input(f"\nIntroduzca el valor de X en la Ecuación {i+1}: ")
-        if X > 0:
-            Xec = f"{X}"
-        elif X == 0:
-            Xec = f"+{X}"
-        else:
-            Xec = f"{X}"
-        print(f"{Xec}X + Y + Z + W = 0 \n")
-        Y = input(f"\nIntroduzca el valor de Y en la Ecuación {i+1}: ")
-        if Y > 0:
-            Yec = f"+{Y}"
-        elif Y == 0:
-            Yec = f"+{Y}"
-        else:
-            Yec = f"{Y}"
-        Z = input(f"\nIntroduzca el valor de Z en la Ecuación {i+1}: ")
-        if Z > 0:
-            Zec = f"+{Z}"
-        elif Z == 0:
-            Zec = f"+{Z}"
-        else:
-            Zec = f"{Z}"
-        W = input(f"\nIntroduzca el valor de W en la Ecuación {i+1}: ")
-        if W > 0:
-            Wec = f"+{W}"
-        elif W == 0:
-            Wec = f"+{W}"
-        else:
-            Wec = f"{W}"
-        print(f"{Xec}X {Yec}Y {Zec}Z {Wec}W = 0 \n")
-        matriz.modificar_valor(i, 0, X)
-        matriz.modificar_valor(i, 1, Y)
-        matriz.modificar_valor(i, 2, Z)
-        matriz.modificar_valor(i, 3, W)
-        igualdad = input(f"\nIntroduzca el valor de igualdad en la Ecuación {i+1}: ")
-        print(f"{Xec}X {Yec}Y {Zec}Z {Wec}W = {igualdad}\n")
-        matriz.modificar_igualdad(i, igualdad)
-    print("\n* El Sistema de Ecuaciones es: \n")
-    print(f"|{matriz.obtener_valor(0, 0)}X {matriz.obtener_valor(0, 1)}Y {matriz.obtener_valor(0, 2)}Z {matriz.obtener_valor(0, 3)}W = {matriz.igualdad1}")
-    print(f"|{matriz.obtener_valor(1, 0)}X {matriz.obtener_valor(1, 1)}Y {matriz.obtener_valor(1, 2)}Z {matriz.obtener_valor(1, 3)}W = {matriz.igualdad2}")
-    print(f"|{matriz.obtener_valor(2, 0)}X {matriz.obtener_valor(2, 1)}Y {matriz.obtener_valor(2, 2)}Z {matriz.obtener_valor(2, 3)}W = {matriz.igualdad3}")
-    print(f"|{matriz.obtener_valor(3, 0)}X {matriz.obtener_valor(3, 1)}Y {matriz.obtener_valor(3, 2)}Z {matriz.obtener_valor(3, 3)}W = {matriz.igualdad4}")
-    return matriz
+    elif opcion == "4":
+        clear_screen()
+        print("\n\tVerificando que la matriz esté bien definida...")
+        while True:
+            if matriz is not None and altura > 0:
+                if matriz.verificar_matriz_bien_definida():
+                    clear_screen()
+                    print("\n\tLa matriz está bien definida.\n")
+                else:
+                    clear_screen()
+                    print("\n\tLa matriz no está bien definida, no es diagonalmente dominante.\n")
+            else:
+                print("\n\tNo se ha generado ninguna matriz para verificar.")
+            break
 
-def main():
-    print('''  
-                        ------------------------------------
-                        || ¡¡ BIENVENIDO A Your_MATRIX !! ||
-                        ------------------------------------ 
-          ''')
-    altura = input("¿Cuántas ecuaciones desea tener 3 ó 4?: ")
-    while altura != "3" and altura != "4":
-        print("\n- Por favor introduzca un valor valido")
-        altura = input("\n¿Cuántas ecuaciones desea tener 3 ó 4?: ")
-    altura = int  (altura)
-    ancho = int(altura)
-    print("\n* El Sistema de Ecuaciones es: \n")
 
-    if ancho == 3:
-        print("|X + Y + Z = 0")
-        print("|X + Y + Z = 0")
-        print("|X + Y + Z = 0")
-    elif ancho == 4:
-        print("|X + Y + Z + W = 0")
-        print("|X + Y + Z + W = 0")
-        print("|X + Y + Z + W = 0")
-        print("|X + Y + Z + W = 0")
+    elif opcion == "5":
+        clear_screen()
+        print('\n\tIngresando al método de Jacobi...')
+        if matriz is not None and altura > 0 and matriz.verificar_matriz_bien_definida:
+            matriz.solucion_jacobi()
+        if matriz is None:
+            print("\n\tNo se ha generado ninguna matriz para solucionar.")
 
-    matriz = Matriz (altura, ancho)  # Crear una matriz de nxm con valores iniciales 0
 
-    if ancho == 3:
-        matriz = trespor3(matriz, altura)
-    elif ancho == 4:
-        matriz = cuatropor4(matriz, altura)
-    matriz.mostrar_matriz()
-
-main()
-
+    elif opcion == '6':
+        print("\nSaliendo del programa...")
+        time.sleep(2)
+        clear_screen()
+        print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
+        break
+    else:
+        clear_screen()
+        print("\n\tOpción no válida, intente de nuevo.")
