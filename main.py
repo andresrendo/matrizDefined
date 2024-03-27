@@ -1,14 +1,17 @@
 from matrix import Matriz
 import os
 import time
+import numpy as np
 
 matriz = None  
 altura = 0
 
 def clear_screen():
-    os.system('cls')
-
-
+    # Comprobamos el sistema operativo actual
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    else:  # Posix (Linux, macOS, etc.)
+        os.system('clear')
 clear_screen()
 print('''  
               ------------------------------------
@@ -51,7 +54,6 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("|X + Y + Z = 0")
             print("|X + Y + Z = 0\n")        
             matriz.trespor3(altura)        
-
     elif opcion == '2':
         while matriz is not None:
             verify = input("\n\t¿Desea sobreescribir la matriz actual? (S/N): ")
@@ -108,7 +110,6 @@ Seleccione el sistema de ecuaciones a trabajar:
             matriz.solucion_jacobi()
         if matriz is None:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
-
 
     elif opcion == '6':
         print("\nSaliendo del programa...")

@@ -27,7 +27,6 @@ class Matriz:
     def modificar_valor(self, fila, columna, nuevo_valor):
         self.matriz[fila][columna] = nuevo_valor
 
-
     def modificar_igualdad(self, numFila, igualdad):
         self.igualdades[numFila] = igualdad
 
