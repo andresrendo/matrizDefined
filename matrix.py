@@ -1,5 +1,13 @@
 import numpy as np
 
+def solo_num(eje,i):
+        while True:
+            try:
+                num = int(input(f"Introduzca el valor de {eje} en la ecuacion {i+1}: "))
+                break
+            except ValueError:
+                print("Por favor, introduzca un número entero.")
+        return num
 class Matriz:
     def __init__(self, filas, columnas, valor_inicial=0):
         self.filas = filas
@@ -30,10 +38,10 @@ class Matriz:
 
     def trespor3(matriz, altura):
         for i in range(altura):
-            X = int(input(f"Introduzca el valor de X en la ecuacion {i+1}: "))
-            Y = int(input(f"Introduzca el valor de Y en la ecuacion {i+1}: "))
-            Z = int(input(f"Introduzca el valor de Z en la ecuacion {i+1}: "))
-            igualdad = int(input(f"Introduzca el valor de igualdad en la ecuacion {i+1}: "))
+            X = solo_num("X",i)
+            Y = solo_num("Y",i)
+            Z = solo_num("Z",i)
+            igualdad = solo_num("igualdad",i)
             # Formatea variables con signos
             Xec = "+" if X > 0 else ""
             Yec = "+" if Y > 0 else ""
@@ -45,19 +53,19 @@ class Matriz:
             matriz.modificar_valor(i, 2, Z)
             matriz.modificar_igualdad(i, igualdad)
 
-        print("El sistema de ecuaciones es:")
+        print("\nEl sistema de ecuaciones es:")
         for i in range(altura):
-            print(f"|{matriz.obtener_valor(i, 0)}X {matriz.obtener_valor(i, 1)}Y {matriz.obtener_valor(i, 2)}Z = {matriz.igualdades[i]}|")
+            print(f"\t |{matriz.obtener_valor(i, 0)}X\t {matriz.obtener_valor(i, 1)}Y\t {matriz.obtener_valor(i, 2)}Z\t =\t {matriz.igualdades[i]}|\n")
         return matriz
 
 
     def cuatropor4(matriz, altura):
         for i in range(altura):
-            X = int(input(f"Introduzca el valor de X en la ecuacion {i+1}: "))
-            Y = int(input(f"Introduzca el valor de Y en la ecuacion {i+1}: "))
-            Z = int(input(f"Introduzca el valor de Z en la ecuacion {i+1}: "))
-            W = int(input(f"Introduzca el valor de W en la ecuacion {i+1}: "))
-            igualdad = int(input(f"Introduzca el valor de igualdad en la ecuacion {i+1}: "))
+            X = solo_num("X",i)
+            Y = solo_num("Y",i)
+            Z = solo_num("Z",i)
+            W = solo_num("W",i)
+            igualdad = solo_num("igualdad",i)
 
             Xec = "+" if X > 0 else ""
             Yec = "+" if Y > 0 else ""
@@ -71,9 +79,9 @@ class Matriz:
             matriz.modificar_valor(i, 3, W)
             matriz.modificar_igualdad(i, igualdad)
 
-        print("El sistema de ecuaciones es:")
+        print("\nEl sistema de ecuaciones es:")
         for i in range(altura):
-            print(f"|{matriz.obtener_valor(i, 0)}X {matriz.obtener_valor(i, 1)}Y {matriz.obtener_valor(i, 2)}Z {matriz.obtener_valor(i, 3)}W = {matriz.igualdades[i]}|")
+            print(f"\t |{matriz.obtener_valor(i, 0)}X\t {matriz.obtener_valor(i, 1)}Y\t {matriz.obtener_valor(i, 2)}Z\t {matriz.obtener_valor(i, 3)}W\t =\t {matriz.igualdades[i]}|\n")
         return matriz
 
 
@@ -94,8 +102,8 @@ class Matriz:
             x = x_new
 
 
-        print("Solution")
-        print(x)    
+        print("\nSolution:")
+        print(f'\t{x}')    
 
 
 
