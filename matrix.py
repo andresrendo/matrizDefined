@@ -3,7 +3,7 @@ import numpy as np
 def solo_num(eje,i):
         while True:
             try:
-                num = int(input(f"Introduzca el valor de {eje} en la ecuacion {i+1}: "))
+                num = int(input(f"Introduzca el valor de {eje} en la ecuación {i+1}: "))
                 break
             except ValueError:
                 print("Por favor, introduzca un número entero.")
