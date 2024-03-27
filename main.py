@@ -1,13 +1,17 @@
 from matrix import Matriz
 import os
 import time
+import numpy as np
 
 matriz = None  
 altura = 0
 
 def clear_screen():
-    os.system('cls')
-    
+    # Comprobamos el sistema operativo actual
+    if os.name == 'nt':  # Windows
+        os.system('cls')
+    else:  # Posix (Linux, macOS, etc.)
+        os.system('clear')
 
 clear_screen()
 print(f'\n\t\tBienvenid@ al mejor programa de matrices de la UNIMET')
