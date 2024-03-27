@@ -17,7 +17,15 @@ print('''
 ''')
 
 while True:
-    print("\nSeleccione el sistema de ecuaciones a trabajar:\n\n\t1. Sistema de 3 ecuaciones\n\t2. Sistema de 4 ecuacion\n\t3. Mostrar matriz\n\t4. Verificar que la matriz esté bien definida\n\t5. Solucionar sistema por metodo de Jacobi\n\t6. Salir")
+    print('''
+Seleccione el sistema de ecuaciones a trabajar:
+    
+    1. Sistema de 3 ecuaciones
+    2. Sistema de 4 ecuaciones
+    3. Mostrar matriz
+    4. Verificar que la matriz esté bien definida
+    5. Solucionar sistema por Sucesión de Jacobi
+    6. Salir''')
 
     opcion = input("\nIngrese la opción deseada: ")
     if opcion == '1':
@@ -32,10 +40,10 @@ while True:
             elif verify.lower() == 's'or verify.lower() == 'si':
                 true = 0
                 break
-            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Si o No. ")
+            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Sí o No. ")
         if true == 0:
             clear_screen()
-            print("\n\tIniciando creacion de matriz de 3x3...")
+            print("\n\tIniciando creación de matriz de 3x3...")
             filas = columnas = 3
             matriz = Matriz(filas, columnas)
             altura = filas
@@ -55,10 +63,10 @@ while True:
             elif verify.lower() == 's'or verify.lower() == 'si':
                 true = 0
                 break
-            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Si o No. ")
+            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Sí o No. ")
         if true == 0:
             clear_screen()
-            print("\n\tIniciando creacion de matriz de 4x4...")
+            print("\n\tIniciando creación de matriz de 4x4...")
             filas = columnas = 4
             matriz = Matriz(filas, columnas)
             altura = filas
@@ -95,7 +103,7 @@ while True:
 
     elif opcion == "5":
         clear_screen()
-        print('\n\tIngresando al método de Jacobi...')
+        print('\n\tIngresando a la Sucesión de Jacobi...')
         if matriz is not None and altura > 0 and matriz.verificar_matriz_bien_definida:
             matriz.solucion_jacobi()
         if matriz is None:
