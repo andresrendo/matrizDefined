@@ -84,6 +84,14 @@ class Matriz:
         return matriz
 
 
+    def verificar_matriz_nula(self):
+        for i in range(self.filas):
+            for j in range(self.columnas):
+                if self.matriz[i][j] != 0:
+                    return False
+        return True
+
+
     def verificar_matriz_bien_definida(self):
         for i in range(self.filas):
             suma_fila = sum(abs(self.matriz[i, j]) for j in range(self.columnas) if i != j)
@@ -99,7 +107,6 @@ class Matriz:
 
             x_new = (self.igualdades - np.dot(R,x))/D
             x = x_new
-
 
         print("\nSolution:")
         print(f'\t{x}')   
