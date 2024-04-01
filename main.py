@@ -99,10 +99,8 @@ Seleccione el sistema de ecuaciones a trabajar:
         while True:
             if matriz is not None and altura > 0:
                 if matriz.verificar_matriz_bien_definida():
-                    clear_screen()
                     print("\n\tLa matriz está bien definida.\n")
                 else:
-                    clear_screen()
                     print("\n\tLa matriz no está bien definida, no es diagonalmente dominante.\n")
             else:
                 print("\n\tNo se ha generado ninguna matriz para verificar.")
@@ -111,11 +109,15 @@ Seleccione el sistema de ecuaciones a trabajar:
 
     elif opcion == "5":
         clear_screen()
-        print('\n\tIngresando a la Sucesión de Jacobi...')
-        if matriz is not None and altura > 0 and matriz.verificar_matriz_bien_definida:
-            matriz.solucion_jacobi()
-        if matriz is None:
+        if matriz is not None and altura > 0:
+            if matriz.verificar_matriz_bien_definida():
+                print('\n\tIngresando a la Sucesión de Jacobi...')
+                matriz.solucion_jacobi()
+            else:
+                print("\n\tNo se puede realizar la sucesión de Jacobi porque la matriz no es diagonalmente dominante.")
+        else:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
+
 
     elif opcion == '6':
         print("\nSaliendo del programa...")
@@ -123,6 +125,7 @@ Seleccione el sistema de ecuaciones a trabajar:
         clear_screen()
         print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
         break
+
     else:
         clear_screen()
         print("\n\tOpción no válida, intente de nuevo.")
