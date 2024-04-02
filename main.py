@@ -21,7 +21,7 @@ print('''
 
 while True:
     print('''
-Seleccione el sistema de ecuaciones a trabajar:
+Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
     
     1. Sistema de 3 ecuaciones.
     2. Sistema de 4 ecuaciones.
@@ -29,7 +29,8 @@ Seleccione el sistema de ecuaciones a trabajar:
     4. Verificar que la matriz esté bien definida.
     5. Solucionar sistema por Sucesión de Jacobi.
     6. Obtener Matriz Traspuesta.
-    7. Obtener Matriz Inversa
+    7. Obtener Matriz Inversa.
+    8. Calcular la solucion a traves de Python.
     0. Salir''')
 
     opcion = input("\nIngrese la opción deseada: ")
@@ -129,9 +130,13 @@ Seleccione el sistema de ecuaciones a trabajar:
 
     elif opcion == "6":
         clear_screen()
-        mat = matriz.matriz
-        trasp = np.transpose(mat)
-        print(f'\n\tLa matriz original es: \n{mat}\n\nY la matriz traspuesta es: \n{trasp}')
+        print("\n\tMostrando matriz...\n")
+        if matriz is not None and altura >0:    
+            mat = matriz.matriz
+            trasp = np.transpose(mat)
+            print(f'\n\tLa matriz original es: \n{mat}\n\n\tY la matriz traspuesta es: \n{trasp}')
+        else: 
+            print("\n\tNo se ha generado ninguna matriz aún.")
 
 
     elif opcion == "7":
@@ -150,6 +155,9 @@ Seleccione el sistema de ecuaciones a trabajar:
         else:
             print("\n\tNo se ha generado ninguna matriz aún.")
 
+    elif opcion == "8":
+        clear_screen()
+        matriz.solucion_python()
 
     elif opcion == '0':
         print("\n\tSaliendo del programa...")

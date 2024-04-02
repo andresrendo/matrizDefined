@@ -111,6 +111,12 @@ class Matriz:
         print("\nSolution:")
         print(f'\t{x}')   
 
+    def solucion_python(self):
+        a = self.matriz
+        b = self.igualdades
+        x = np.linalg.lstsq(a, b, rcond=None)[0]
+        print(f'\n\tLa solucion obtenida a traves de Python es: \n{x}')
+
     def hacer_diagonalmente_dominante(self, intentos_maximos=10):
         intentos = 0
         while not self.verificar_matriz_bien_definida():
