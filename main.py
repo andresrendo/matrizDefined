@@ -127,9 +127,16 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
 
 
+    elif opcion == "6":
+        clear_screen()
+        mat = matriz.matriz
+        trasp = np.transpose(mat)
+        print(f'\n\tLa matriz original es: \n{mat}\n\nY la matriz traspuesta es: \n{trasp}')
+
+
     elif opcion == "7":
         clear_screen()
-        print("\n\tMostrando matriz...")
+        print("\n\tMostrando matriz...\n")
         if matriz is not None and altura > 0:
             if matriz.verificar_matriz_nula():
                 print("\n\tSe ha generado la matriz nula.")
@@ -145,7 +152,7 @@ Seleccione el sistema de ecuaciones a trabajar:
 
 
     elif opcion == '0':
-        print("\nSaliendo del programa...")
+        print("\n\tSaliendo del programa...")
         time.sleep(2)
         clear_screen()
         print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
