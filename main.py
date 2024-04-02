@@ -1,4 +1,4 @@
-from matrix import Matriz
+from matrix2 import Matriz
 import os
 import time
 import numpy as np
@@ -54,19 +54,19 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("|X + Y + Z = 0")
             print("|X + Y + Z = 0\n")        
             matriz.trespor3(altura)        
+
     elif opcion == '2':
         while matriz is not None:
             verify = input("\n\t¿Desea sobreescribir la matriz actual? (S/N): ")
             if verify.lower() == 'n' or verify.lower() == 'no':
                 clear_screen()
-                true =1
                 print("\n\tCreación de matriz cancelada.")
                 break
-            elif verify.lower() == 's'or verify.lower() == 'si':
-                true = 0
+            elif verify.lower() == 's' or verify.lower() == 'si':
                 break
-            else: print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Sí o No. ")
-        if true == 0:
+            else:
+                print("\n\tOpción no válida, intente de nuevo.\n\tSolo responda Sí o No.")
+        if matriz is None or verify.lower() == 's' or verify.lower() == 'si':
             clear_screen()
             print("\n\tIniciando creación de matriz de 4x4...")
             filas = columnas = 4
@@ -76,16 +76,22 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("|X + Y + Z + W = 0")
             print("|X + Y + Z + W = 0")
             print("|X + Y + Z + W = 0\n")
-            matriz.cuatropor4(altura)          
+            matriz.cuatropor4(altura)
 
     elif opcion == "3":
         clear_screen()
         print("\n\tMostrando matriz...")
         if matriz is not None and altura > 0:
-            print("\n\tMatriz generada:") 
-            matriz.mostrar_matriz() 
+            if matriz.verificar_matriz_nula():
+                print("\n\tSe ha generado la matriz nula.")
+                print("\n\tRegresando al menú para ingresar otro sistema...")
+                time.sleep(2)
+            else:
+                print("\n\tMatriz generada:") 
+                matriz.mostrar_matriz() 
         else:
             print("\n\tNo se ha generado ninguna matriz aún.")
+
 
     elif opcion == "4":
         clear_screen()
@@ -93,10 +99,8 @@ Seleccione el sistema de ecuaciones a trabajar:
         while True:
             if matriz is not None and altura > 0:
                 if matriz.verificar_matriz_bien_definida():
-                    clear_screen()
                     print("\n\tLa matriz está bien definida.\n")
                 else:
-                    clear_screen()
                     print("\n\tLa matriz no está bien definida, no es diagonalmente dominante.\n")
             else:
                 print("\n\tNo se ha generado ninguna matriz para verificar.")
@@ -105,11 +109,15 @@ Seleccione el sistema de ecuaciones a trabajar:
 
     elif opcion == "5":
         clear_screen()
-        print('\n\tIngresando a la Sucesión de Jacobi...')
-        if matriz is not None and altura > 0 and matriz.verificar_matriz_bien_definida:
-            matriz.solucion_jacobi()
-        if matriz is None:
+        if matriz is not None and altura > 0:
+            if matriz.verificar_matriz_bien_definida():
+                print('\n\tIngresando a la Sucesión de Jacobi...')
+                matriz.solucion_jacobi()
+            else:
+                print("\n\tNo se puede realizar la sucesión de Jacobi porque la matriz no es diagonalmente dominante.")
+        else:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
+
 
     elif opcion == '6':
         print("\nSaliendo del programa...")
@@ -117,6 +125,7 @@ Seleccione el sistema de ecuaciones a trabajar:
         clear_screen()
         print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
         break
+
     else:
         clear_screen()
         print("\n\tOpción no válida, intente de nuevo.")
