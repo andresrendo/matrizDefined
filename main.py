@@ -28,9 +28,9 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
     3. Mostrar matriz.
     4. Verificar que la matriz esté bien definida.
     5. Solucionar sistema por Sucesión de Jacobi.
-    6. Obtener Matriz Traspuesta.
-    7. Obtener Matriz Inversa.
-    8. Calcular la solucion a traves de Python.
+    6. Solucionar a traves de Python.
+    7. Obtener Matriz Traspuesta.
+    8. Obtener Matriz Inversa.
     0. Salir''')
 
     opcion = input("\nIngrese la opción deseada: ")
@@ -130,6 +130,11 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
 
     elif opcion == "6":
         clear_screen()
+        matriz.solucion_python()
+
+
+    elif opcion == "7":
+        clear_screen()
         print("\n\tMostrando matriz...\n")
         if matriz is not None and altura >0:    
             mat = matriz.matriz
@@ -139,7 +144,7 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
             print("\n\tNo se ha generado ninguna matriz aún.")
 
 
-    elif opcion == "7":
+    elif opcion == "8":
         clear_screen()
         print("\n\tMostrando matriz...\n")
         if matriz is not None and altura > 0:
@@ -154,10 +159,6 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
                 matriz.mostrar_matriz()
         else:
             print("\n\tNo se ha generado ninguna matriz aún.")
-
-    elif opcion == "8":
-        clear_screen()
-        matriz.solucion_python()
 
     elif opcion == '0':
         print("\n\tSaliendo del programa...")

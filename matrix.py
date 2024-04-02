@@ -128,7 +128,7 @@ class Matriz:
                     # La fila i no es diagonalmente dominante, encontrar otra fila para intercambiar
                     for j in range(i+1, self.filas):
                         suma_fila = sum(abs(self.matriz[j, k]) for k in range(self.columnas) if j-1 != k)
-                        print(suma_fila)
+#                        print(suma_fila)
                         if abs(self.matriz[j, i]) > suma_fila:
                             # Intercambiar filas i y j
                             self.intercambiar_filas(i, j)
