@@ -3,7 +3,7 @@ import os
 import time
 import numpy as np
 
-matriz = None  
+matriz = None
 altura = 0
 
 def clear_screen():
@@ -23,14 +23,14 @@ while True:
     print('''
 Seleccione el sistema de ecuaciones a trabajar:
     
-    1. Sistema de 3 ecuaciones
-    2. Sistema de 4 ecuaciones
-    3. Mostrar matriz
-    4. Verificar que la matriz esté bien definida
-    5. Solucionar sistema por Sucesión de Jacobi
-    6. Calcular la traspuesta
-    7. Calcular la inversa
-    8. Salir''')
+    1. Sistema de 3 ecuaciones.
+    2. Sistema de 4 ecuaciones.
+    3. Mostrar matriz.
+    4. Verificar que la matriz esté bien definida.
+    5. Solucionar sistema por Sucesión de Jacobi.
+    6. Obtener Matriz Traspuesta.
+    7. Obtener Matriz Inversa
+    0. Salir''')
 
     opcion = input("\nIngrese la opción deseada: ")
     if opcion == '1':
@@ -127,13 +127,6 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
 
 
-    elif opcion == '8':
-        print("\nSaliendo del programa...")
-        time.sleep(2)
-        clear_screen()
-        print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
-        break
-
     elif opcion == "7":
         clear_screen()
         print("\n\tMostrando matriz...")
@@ -149,6 +142,14 @@ Seleccione el sistema de ecuaciones a trabajar:
                 matriz.mostrar_matriz()
         else:
             print("\n\tNo se ha generado ninguna matriz aún.")
+
+
+    elif opcion == '0':
+        print("\nSaliendo del programa...")
+        time.sleep(2)
+        clear_screen()
+        print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
+        break
 
     else:
         clear_screen()
