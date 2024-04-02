@@ -131,7 +131,6 @@ class Matriz:
 
 
     def intercambiar_filas(self, i, j):
-        print("entramos en la funcion de intercambiar filas")
         # Función para intercambiar filas i y j en la matriz
         for columna in range(self.columnas):
             temp = self.obtener_valor(i, columna)
@@ -141,3 +140,12 @@ class Matriz:
         self.modificar_igualdad(i, self.igualdades[j])
         self.modificar_igualdad(j, temp_igualdad)
         self.mostrar_matriz()
+
+    def generar_inversa(self):
+        # Calcular la inversa de la matriz utilizando np.linalg.inv()
+        try:
+            inversa = np.linalg.inv(self.matriz)
+            print(inversa)
+        except np.linalg.LinAlgError:
+            print("La matriz no es invertible.")
+            return None

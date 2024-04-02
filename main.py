@@ -28,7 +28,9 @@ Seleccione el sistema de ecuaciones a trabajar:
     3. Mostrar matriz
     4. Verificar que la matriz esté bien definida
     5. Solucionar sistema por Sucesión de Jacobi
-    6. Salir''')
+    6. Calcular la traspuesta
+    7. Calcular la inversa
+    8. Salir''')
 
     opcion = input("\nIngrese la opción deseada: ")
     if opcion == '1':
@@ -125,12 +127,28 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
 
 
-    elif opcion == '6':
+    elif opcion == '8':
         print("\nSaliendo del programa...")
         time.sleep(2)
         clear_screen()
         print("\n\tGracias por usar el mejor programa de matrices de la UNIMET\n")
         break
+
+    elif opcion == "7":
+        clear_screen()
+        print("\n\tMostrando matriz...")
+        if matriz is not None and altura > 0:
+            if matriz.verificar_matriz_nula():
+                print("\n\tSe ha generado la matriz nula.")
+                print("\n\tRegresando al menú para ingresar otro sistema...")
+                time.sleep(2)
+            else:
+                print("\n\tMatriz Inversa:") 
+                matriz.generar_inversa()
+                print("\n\tMatriz Original:") 
+                matriz.mostrar_matriz()
+        else:
+            print("\n\tNo se ha generado ninguna matriz aún.")
 
     else:
         clear_screen()
