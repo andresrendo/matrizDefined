@@ -1,4 +1,4 @@
-from matrix2 import Matriz
+from matrix import Matriz
 import os
 import time
 import numpy as np
@@ -101,7 +101,13 @@ Seleccione el sistema de ecuaciones a trabajar:
                 if matriz.verificar_matriz_bien_definida():
                     print("\n\tLa matriz está bien definida.\n")
                 else:
-                    print("\n\tLa matriz no está bien definida, no es diagonalmente dominante.\n")
+                    matriz.hacer_diagonalmente_dominante()
+                    if matriz.verificar_matriz_bien_definida():
+                        print("\n\tLa matriz se ha ajustado y ahora está bien definida.\n")
+                        matriz.mostrar_matriz()
+                    else:
+                        print("\n\tNo se pudo ajustar la matriz para que sea diagonalmente dominante.\n")
+                        print("\n\tLa matriz no está bien definida, no es diagonalmente dominante.\n")
             else:
                 print("\n\tNo se ha generado ninguna matriz para verificar.")
             break

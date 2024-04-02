@@ -110,3 +110,34 @@ class Matriz:
 
         print("\nSolution:")
         print(f'\t{x}')   
+
+    def hacer_diagonalmente_dominante(self, intentos_maximos=10):
+        intentos = 0
+        while not self.verificar_matriz_bien_definida():
+            if intentos >= intentos_maximos:
+                break
+            for i in range(self.filas):
+                suma_fila = sum(abs(self.matriz[i, j]) for j in range(self.columnas) if i != j)
+                if abs(self.matriz[i, i]) <= suma_fila:
+                    # La fila i no es diagonalmente dominante, encontrar otra fila para intercambiar
+                    for j in range(i+1, self.filas):
+                        suma_fila = sum(abs(self.matriz[j, k]) for k in range(self.columnas) if j-1 != k)
+                        print(suma_fila)
+                        if abs(self.matriz[j, i]) > suma_fila:
+                            # Intercambiar filas i y j
+                            self.intercambiar_filas(i, j)
+                            break
+            intentos += 1
+
+
+    def intercambiar_filas(self, i, j):
+        print("entramos en la funcion de intercambiar filas")
+        # Función para intercambiar filas i y j en la matriz
+        for columna in range(self.columnas):
+            temp = self.obtener_valor(i, columna)
+            self.modificar_valor(i, columna, self.obtener_valor(j, columna))
+            self.modificar_valor(j, columna, temp)
+        temp_igualdad = self.igualdades[i]
+        self.modificar_igualdad(i, self.igualdades[j])
+        self.modificar_igualdad(j, temp_igualdad)
+        self.mostrar_matriz()
