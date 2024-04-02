@@ -3,7 +3,8 @@ import os
 import time
 import numpy as np
 
-matriz = None  
+matriz = None
+proporcion = None  
 altura = 0
 
 def clear_screen():
@@ -23,12 +24,14 @@ while True:
     print('''
 Seleccione el sistema de ecuaciones a trabajar:
     
-    1. Sistema de 3 ecuaciones
-    2. Sistema de 4 ecuaciones
-    3. Mostrar matriz
-    4. Verificar que la matriz esté bien definida
-    5. Solucionar sistema por Sucesión de Jacobi
-    6. Salir''')
+    1. Sistema de 3 ecuaciones.
+    2. Sistema de 4 ecuaciones.
+    3. Mostrar matriz.
+    4. Verificar que la matriz esté bien definida.
+    5. Solucionar sistema por Sucesión de Jacobi.
+    6. Conseguir la matriz Traspuesta.
+    7. Conseguir la matriz Inversa.
+    0. Salir.''')
 
     opcion = input("\nIngrese la opción deseada: ")
     if opcion == '1':
@@ -50,6 +53,7 @@ Seleccione el sistema de ecuaciones a trabajar:
             filas = columnas = 3
             matriz = Matriz(filas, columnas)
             altura = filas
+            proporcion = 3
             print("\n|X + Y + Z = 0")
             print("|X + Y + Z = 0")
             print("|X + Y + Z = 0\n")        
@@ -72,6 +76,7 @@ Seleccione el sistema de ecuaciones a trabajar:
             filas = columnas = 4
             matriz = Matriz(filas, columnas)
             altura = filas
+            proporcion = 4
             print("\n|X + Y + Z + W = 0")
             print("|X + Y + Z + W = 0")
             print("|X + Y + Z + W = 0")
@@ -125,7 +130,14 @@ Seleccione el sistema de ecuaciones a trabajar:
             print("\n\tNo se ha generado ninguna matriz para solucionar.")
 
 
-    elif opcion == '6':
+    elif opcion == "6":
+        clear_screen()
+        mat = matriz.matriz
+        trasp = np.transpose(mat)
+        print(f'\nLa matriz original es: \n{mat}\n\nY la matriz traspuesta es: \n{trasp}')
+
+
+    elif opcion == '0':
         print("\nSaliendo del programa...")
         time.sleep(2)
         clear_screen()
