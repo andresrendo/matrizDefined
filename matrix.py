@@ -1,4 +1,7 @@
 import numpy as np
+import scipy
+import scipy.linalg
+
 
 def solo_num(eje,i):
         while True:
@@ -155,3 +158,19 @@ class Matriz:
         except np.linalg.LinAlgError:
             print("La matriz no es invertible.")
             return None
+        
+    def factorizar_lu(self):
+        # Calcular matrices L y U
+        try:
+            P,L,U = scipy.linalg.lu(self.matriz)
+            print(f'P: {P} \n L: {L} \n U: {U}')
+        except scipy.linalg.LinAlgError:
+            print("La matriz no acepta facorizacion lu.")
+
+    def factorizar_qr(self):
+        # Calcular matrices Q y R
+        try:
+            Q,R= np.linalg.qr(self.matriz)
+            print(f'Q: {Q} \n R: {R}')
+        except np.linalg.LinAlgError:
+           print("La matriz no acepta facorizacion lu.") 

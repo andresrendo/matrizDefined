@@ -31,6 +31,8 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
     6. Solucionar a traves de Python.
     7. Obtener Matriz Traspuesta.
     8. Obtener Matriz Inversa.
+    9. Obtener Matrices L y U.
+    10. Obtener Matrices Q y R.
     0. Salir''')
 
     opcion = input("\nIngrese la opción deseada: ")
@@ -160,6 +162,20 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
         else:
             print("\n\tNo se ha generado ninguna matriz aún.")
 
+    elif opcion == "9":
+        clear_screen()
+        print("\n\tMostrando matriz...\n")
+        matriz.factorizar_lu()
+        print("\n\tMatriz Original:") 
+        matriz.mostrar_matriz()
+
+    elif opcion == "10":
+        clear_screen()
+        print("\n\tMostrando matriz...\n")
+        matriz.factorizar_qr()
+        print("\n\tMatriz Original:") 
+        matriz.mostrar_matriz()
+        
     elif opcion == '0':
         print("\n\tSaliendo del programa...")
         time.sleep(2)
