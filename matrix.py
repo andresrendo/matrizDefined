@@ -1,6 +1,5 @@
 import numpy as np
-import scipy
-import scipy.linalg
+import scipy as sci
 
 
 def solo_num(eje,i):
@@ -162,15 +161,15 @@ class Matriz:
     def factorizar_lu(self):
         # Calcular matrices L y U
         try:
-            P,L,U = scipy.linalg.lu(self.matriz)
-            print(f'P: {P} \n L: {L} \n U: {U}')
-        except scipy.linalg.LinAlgError:
+            P,L,U = sci.linalg.lu(self.matriz)
+            print(f'P: \n{P} \n\n L: \n{L} \n\n U: \n{U}')
+        except sci.linalg.LinAlgError:
             print("La matriz no acepta facorizacion lu.")
 
     def factorizar_qr(self):
         # Calcular matrices Q y R
         try:
             Q,R= np.linalg.qr(self.matriz)
-            print(f'Q: {Q} \n R: {R}')
+            print(f'Q: \n{Q} \n\n R: \n{R}')
         except np.linalg.LinAlgError:
            print("La matriz no acepta facorizacion lu.") 

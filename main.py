@@ -163,18 +163,24 @@ Seleccione el sistema de ecuaciones a trabajar, o la opción a funcionar:
             print("\n\tNo se ha generado ninguna matriz aún.")
 
     elif opcion == "9":
-        clear_screen()
-        print("\n\tMostrando matriz...\n")
-        matriz.factorizar_lu()
-        print("\n\tMatriz Original:") 
-        matriz.mostrar_matriz()
+        if matriz is not None and altura >0:
+            clear_screen()
+            print("\n\tMostrando matriz...\n")
+            matriz.factorizar_lu()
+            print("\n\tMatriz Original:\n") 
+            matriz.mostrar_matriz()
+        else: 
+            print("\n\tNo se ha generado ninguna matriz aún.")
 
     elif opcion == "10":
-        clear_screen()
-        print("\n\tMostrando matriz...\n")
-        matriz.factorizar_qr()
-        print("\n\tMatriz Original:") 
-        matriz.mostrar_matriz()
+        if matriz is not None and altura >0:
+            clear_screen()
+            print("\n\tMostrando matriz...\n")
+            matriz.factorizar_qr()
+            print("\n\tMatriz Original:\n") 
+            matriz.mostrar_matriz()
+        else: 
+            print("\n\tNo se ha generado ninguna matriz aún.")
         
     elif opcion == '0':
         print("\n\tSaliendo del programa...")
